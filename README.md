@@ -88,7 +88,7 @@ The larger the number of guard cells, more neighboring cells will be excluded in
 **SNR (Offset): ** 
 
 ```matlab
-SNR = pow2db(2.1);
+SNR = pow2db(2.0);
 ```
 
 The larger the SNR value is, the higher the threshold is, and less targets remains after the filtering

@@ -171,7 +171,7 @@ Gd = 3;
 
 % *%TODO* :
 % offset the threshold by SNR value in dB
-SNR = pow2db(2.1);
+SNR = pow2db(2.0);
 
 % *%TODO* :
 %Create a vector to store noise_level for each iteration on training cells
@@ -197,6 +197,9 @@ noise_level = zeros(1,1);
 max_element = max(max(RDM)); % max element in db
 RDM = RDM - max_element; % normalise in pow
 
+% total num of training cells
+num_T_cells = 2*(Td+Gd+1)*2*(Tr+Gr+1) - (2*Gr+1)*(2*Gd+1);
+
 % loop through all cells in range direction
 for i = Tr+Gr+1 : Nr/2-(Gr+Tr)
     % loop through all cells in doppler direction
@@ -213,8 +216,6 @@ for i = Tr+Gr+1 : Nr/2-(Gr+Tr)
             end
         end
         
-        % total num of training cells
-        num_T_cells = 2*(Td+Gd+1)*2*(Tr+Gr+1) - (2*Gr+1)*(2*Gd+1);
         % noise threshold
         noise_threshold = pow2db(noise_level/num_T_cells);
         %Add the SNR to the threshold
